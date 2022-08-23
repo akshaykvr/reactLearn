@@ -1,25 +1,43 @@
 import logo from './logo.svg';
+import React, { Component, useState } from 'react';
 import './App.css';
+import { createPortal } from 'react-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// function App(props) {
+//   const [lastname, setLastName] = useState('abdulla')
+  
+//   const changeMe = () => {
+//     console.log('called')
+//     setLastName('abcd')
+//   };
+//   console.log(props)
+//   return (
+//     <div className="App">
+//       Hello, {props.name} {lastname}
+//       <button onClick={changeMe}>Click me</button>
+//     </div>
+//   );
+// }
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { lastname: 'abdulla'};
+  }
+  
+  changeMe = () => {
+    this.setState({lastname: 'abcd'});
+  };
+
+
+  render() {
+    return (
+      <div className="App">
+        Hello, {this.props.name} {this.state.lastname}
+        <button onClick={this.changeMe}>Click me</button>
+      </div>
+    );
+  }
 }
 
 export default App;
